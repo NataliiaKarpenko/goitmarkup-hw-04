@@ -1,10 +1,12 @@
 :root {
-  --primary-text-color: #212121;
-  --secondary-text-color: #757575;
-  --accent-color: #2196f3;
-  --white-bgc: #ffffff;
-  --dark-grey-bgc: #2f303a;
-  --light-grey-bgc: #f5f4fa;
+  --primary-text-color: rgba(33, 33, 33, 1);
+  --secondary-text-color: rgba(117, 117, 117, 1);
+  --accent-color: rgba(33, 150, 243, 1);
+  --white-bgc: rgba(255, 255, 255, 1);
+  --dark-grey-bgc: rgba(47, 48, 58, 1);
+  --light-grey-bgc: rgba(245, 244, 250, 1);
+  --icon-light-grey: rgba(175, 177, 184, 1);
+  --border-light-grey: rgba(236, 236, 236, 1);
 }
 
 /* Removing default styling */
@@ -22,17 +24,16 @@
 /* Common classes */
 
 body {
-  min-width: 1600px;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: var(--white-bgc);
 }
 
 .container {
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 15px;
   padding-right: 15px;
-  width: 1200px;
 }
 
 .section {
@@ -63,10 +64,13 @@ img {
   height: auto;
 }
 
-/* Header & footer */
+/* Header */
 
 .header-section {
-  border-bottom: 1px solid #ececec;
+  padding-top: 25px;
+  padding-bottom: 25px;
+
+  border-bottom: 1px solid var(--border-light-grey);
 }
 
 .header-container {
@@ -81,7 +85,7 @@ img {
 .logo {
   display: inline-block;
 
-  font-family: 'Raleway', sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 26px;
   font-weight: 700;
   line-height: 1.19;
@@ -90,8 +94,6 @@ img {
 
 .header-logo {
   margin-right: 93px;
-  padding-top: 25px;
-  padding-bottom: 25px;
 }
 
 .logo-initial {
@@ -109,6 +111,7 @@ img {
 .contacts-list {
   display: flex;
   margin-left: auto;
+  align-items: center;
 }
 
 .header-list-item:not(:last-child) {
@@ -117,10 +120,6 @@ img {
 
 .menu-link,
 .header-contacts {
-  display: block;
-  padding-top: 32px;
-  padding-bottom: 32px;
-
   font-size: 14px;
   font-weight: 500;
   line-height: 1.14;
@@ -131,12 +130,15 @@ img {
   color: var(--primary-text-color);
 }
 
-.active-link {
-  color: var(--accent-color);
+.header-contacts {
+  display: flex;
+  align-items: center;
+
+  color: var(--secondary-text-color);
 }
 
-.header-contacts {
-  color: var(--secondary-text-color);
+.active-link {
+  color: var(--accent-color);
 }
 
 .logo:focus,
@@ -151,11 +153,20 @@ img {
   color: var(--accent-color);
 }
 
+.contacts-icon {
+  margin-right: 10px;
+  fill: currentColor;
+}
+
+/* Footer */
+
 .footer-section {
+  background-color: var(--dark-grey-bgc);
+}
+
+.footer-contacts-box {
   padding-top: 60px;
   padding-bottom: 60px;
-
-  background-color: var(--dark-grey-bgc);
 }
 
 .footer-logo {
@@ -189,14 +200,86 @@ img {
   margin-bottom: 9px;
 }
 
+.footer-networks-box {
+  padding-top: 72px;
+  padding-bottom: 100px;
+}
+
+/* Social networks */
+
+.netwoks-list {
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
+}
+
+.networks-box-description {
+  margin-top: 0;
+  margin-bottom: 20px;
+
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.14;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--white-bgc);
+}
+
+.footer-networks-list {
+  display: flex;
+  column-gap: 10px;
+}
+
+.networks-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+
+  border-radius: 50%;
+}
+
+.team-network-link {
+  color: var(--icon-light-grey);
+}
+
+.footer-networks-link {
+  color: var(--white-bgc);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.networks-link:hover,
+.networks-link:focus {
+  background-color: var(--accent-color);
+}
+
+.team-network-link:hover {
+  color: var(--white-bgc);
+}
+
+.networks-icon {
+  fill: currentColor;
+}
+
 /* Studio page */
 
 .hero-section {
+  max-width: 1600px;
   text-align: center;
   padding-top: 200px;
   padding-bottom: 200px;
 
   background-color: var(--dark-grey-bgc);
+  background-image: linear-gradient(
+      to right,
+      rgba(47, 48, 58, 0.4),
+      rgba(47, 48, 58, 0.4)
+    ),
+    url("../images/bg-image.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .hero-title {
@@ -232,13 +315,25 @@ img {
 }
 
 .benefits-item {
-  width: calc((100% - 90px) / 4);
+  flex-basis: calc((100% - 90px) / 4);
 }
 
 .benefits-item:not(:last-child),
 .services-item:not(:last-child),
-.team-item:not(:last-child) {
+.team-item:not(:last-child),
+.customers-logo-item:not(:last-child) {
   margin-right: 30px;
+}
+
+.benefits-icon-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  height: 120px;
+
+  background-color: var(--light-grey-bgc);
+  border-radius: 4px;
 }
 
 .benefits-title {
@@ -266,6 +361,10 @@ img {
   padding-top: 0;
 }
 
+.services-item {
+  flex-basis: calc((100% - 60px) / 3);
+}
+
 .section-title {
   margin-top: 0;
   margin-bottom: 50px;
@@ -283,7 +382,7 @@ img {
 
 .team-item {
   text-align: center;
-  width: calc((100% - 90px) / 4);
+  flex-basis: calc((100% - 90px) / 4);
 
   background-color: var(--white-bgc);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
@@ -309,10 +408,30 @@ img {
 
 .team-occupation {
   margin-top: 0;
-  margin-bottom: 0px;
+  margin-bottom: 16px;
   line-height: 1.18;
   letter-spacing: 0.03em;
   color: var(--secondary-text-color);
+}
+
+.customers-logo-item {
+  width: 170px;
+  height: 92px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--icon-light-grey);
+  border: 1px solid var(--icon-light-grey);
+  border-radius: 4px;
+}
+
+.customers-logo {
+  fill: currentColor;
+}
+
+.footer-container {
+  display: flex;
+  gap: 70px;
 }
 
 /* Portfolio page */
@@ -357,9 +476,7 @@ img {
 .project-item {
   margin-right: 30px;
   margin-bottom: 30px;
-  width: calc((100% - 60px) / 3);
-
-  background: #ffffff;
+  flex-basis: calc((100% - 60px) / 3);
 }
 
 .project-item:nth-child(3n) {
@@ -370,15 +487,20 @@ img {
   margin-bottom: 0;
 }
 
+.project-item:hover {
+  border: 1px solid rgba(238, 238, 238, 1);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
+    1px 4px 6px rgba(0, 0, 0, 0.16);
+}
+
 .project-box {
   padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 24px;
   padding-right: 24px;
 
-  border-left: 1px solid #eeeeee;
-  border-right: 1px solid #eeeeee;
-  border-bottom: 1px solid #eeeeee;
+  border: 1px solid var(--border-light-grey);
+  border-top: none;
 }
 
 .project-title {
